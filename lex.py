@@ -40,6 +40,7 @@ def isID(input):
     else:
         return False
 
+# takes in input string and returns if is an int
 def isInt(input):
     # THIS COULD HAVE BEEN DONE ON ONE LINE BUT I THINK THE PROFESSOR WANTS US TO USE THE DFA
     transition = {
@@ -58,7 +59,8 @@ def isInt(input):
         return True
     else: 
         return False
-    
+
+# takes in input string and returns true if follows real number re    
 def isReal(input):
     transition = {
         "digit": {
@@ -108,8 +110,3 @@ def lexer(lexeme):
     else:
         result = f"UNKNOWN: {lexeme}"
     return result
-
-print(lexer('hello'))
-print(lexer('123.321'))
-print(lexer('12'))
-print(isReal('123'))
