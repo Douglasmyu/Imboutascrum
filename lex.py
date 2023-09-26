@@ -3,6 +3,7 @@ KEYWORDS = {'integer', 'function', 'bool', 'real', 'if', 'endif',
             'else', 'ret', 'put', 'get', 'while', 'true', 'false'}
 SEPARATORS = {'(', ')', '{', '}', ',', ';'}
 OPERATORS = {'=', '==', '!=', '>', '<', '<=', '>=', '+', '-', '*', '/'}
+DELIMITERS = {' ', '\n', '(', ')', '{', '}', ',', ';'}
 
 # takes in a string and returns true or false if string is an indentifier  
 def isID(input):
@@ -23,17 +24,21 @@ def isID(input):
             "E": "E" # sink state to account for empty
         }
     }
+    
     accepting = ["B", "C"]
     starting_state = "A"
     current = starting_state
     
     # loops through input string and follows dfa table
     for ch in input:
+        # if input = l
         if ch.isalpha():
             current = transition["letter"][current]
+        # if input = d
         elif ch.isnumeric():
             current = transition["digit"][current]
         else:
+        # neither letter or digit
             return "False"
     if current in accepting:
         return True
@@ -47,11 +52,12 @@ def isInt(input):
         "A": "B",
         "B": "B"
     }
+    legal_inputs = ['0','1','2','3','4','5','6','7','8','9']
     accepting = "B"
     # setting current to starting state
     current = 'A'
     for ch in input:
-        if ch.isnumeric():
+        if ch in legal_inputs:
             current = transition[current]
         else: 
             return False
@@ -108,14 +114,26 @@ def lexer(lexeme):
     elif isInt(lexeme):
         result = f"INTEGER: {lexeme}"
     else:
-        result = f"UNKNOWN: {lexeme}"
+        result = False
     return result
 
-print(lexer('abcd'))
-print(lexer('a23c'))
-print(lexer('123.321'))
-print(lexer('}'))
-print(lexer('+'))
-print(lexer('function'))
+
+# main loop
+with open('testCase1.txt', 'r') as f:
+    ch = f.read(1)
+    while ch:
+        buffer = ''
+        while ch not in DELIMITERS:
+            buffer += ch
+            ch = f.read(1)
+        # need to account for separators and <= and >= 
+        if ch in SEPARATORS:
+            print(lexer(buffer))
+            print(lexer(ch))
+            ch = f.read(1)
+        else:
+            print(lexer(buffer))
+            ch = f.read(1)
+    
 
 

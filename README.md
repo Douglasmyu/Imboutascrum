@@ -12,7 +12,7 @@
 
 - clarify the process for turning nfsms -> dfas -> code
   (how do we handle empty/epsilon values) => i just used a "sink" value
-- do we really have to implement integer dfa using the fsm or can we just use .isnumeric()
+- clarify what to do with empty/epsilon values... sink states?
 
 ## other things to do
 
