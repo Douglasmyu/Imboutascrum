@@ -110,3 +110,12 @@ def lexer(lexeme):
     else:
         result = f"UNKNOWN: {lexeme}"
     return result
+
+print(lexer('abcd'))
+print(lexer('a23c'))
+print(lexer('123.321'))
+print(lexer('}'))
+print(lexer('+'))
+print(lexer('function'))
+
+
