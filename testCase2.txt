@@ -1,0 +1,11 @@
+function max(x integer, y integer)
+{
+    if (x > y) ret x; else ret y; endif
+}
+
+# 
+integer num1, num2, maximum;
+get(num1, num2);
+maximum = max(num1, num2);
+put(maximum);
+#

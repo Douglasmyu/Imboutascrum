@@ -1,1 +1,6 @@
-213 Hello 123.321 test}321 
+# 
+integer a, b, result;
+get(a, b);
+result = a + b;
+put(result);
+#

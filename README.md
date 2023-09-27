@@ -13,6 +13,8 @@
 - clarify the process for turning nfsms -> dfas -> code
   (how do we handle empty/epsilon values) => i just used a "sink" value
 - clarify what to do with empty/epsilon values... sink states?
+- do we have to have our transitions as simplified as possible?
+- is # a delimiter or what
 
 ## other things to do
 

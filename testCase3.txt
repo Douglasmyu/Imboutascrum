@@ -1,0 +1,26 @@
+function isEven(num integer)
+{
+    if (num % 2 == 0) ret true; else ret false; endif
+}
+
+function square(n integer)
+{
+    ret n * n;
+}
+
+# 
+integer i, limit;
+bool evenCheck;
+get(limit);
+i = 0;
+while (i <= limit)
+{
+    evenCheck = isEven(i);
+    if(evenCheck)
+    {
+        put(i);
+        put(square(i));
+    }
+    i = i + 1;
+}
+#

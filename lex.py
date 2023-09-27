@@ -3,7 +3,7 @@ KEYWORDS = {'integer', 'function', 'bool', 'real', 'if', 'endif',
             'else', 'ret', 'put', 'get', 'while', 'true', 'false'}
 SEPARATORS = {'(', ')', '{', '}', ',', ';'}
 OPERATORS = {'=', '==', '!=', '>', '<', '<=', '>=', '+', '-', '*', '/'}
-DELIMITERS = {' ', '\n', '(', ')', '{', '}', ',', ';'}
+DELIMITERS = {' ', '\n', '(', ')', '{', '}', ',', ';', '#'}
 
 # takes in a string and returns true or false if string is an indentifier  
 def isID(input):
@@ -47,7 +47,6 @@ def isID(input):
 
 # takes in input string and returns if is an int
 def isInt(input):
-    # THIS COULD HAVE BEEN DONE ON ONE LINE BUT I THINK THE PROFESSOR WANTS US TO USE THE DFA
     transition = {
         "A": "B",
         "B": "B"
@@ -102,38 +101,53 @@ def isReal(input):
 # takes buffer as input and returns token and lexeme 
 def lexer(lexeme):
     if lexeme in KEYWORDS:
-        result = f"KEYWORD: {lexeme}"
+        token = "KEYWORDS"
     elif lexeme in OPERATORS:
-        result = f"OPERATOR: {lexeme}"
+        token = "OPERATOR"
     elif lexeme in SEPARATORS:
-        result = f"SEPARATOR: {lexeme}"
+        token = "SEPARATOR"
     elif isReal(lexeme):
-        result = f"REAL: {lexeme}"
+        token = "REAL"
     elif isID(lexeme):
-        result = f"IDENTIFIER: {lexeme}"
+        token = "IDENTIFIER"
     elif isInt(lexeme):
-        result = f"INTEGER: {lexeme}"
+        token = "INTEGER"
     else:
-        result = False
-    return result
+        token = False
+    return token, lexeme
 
 
 # main loop
-with open('testCase1.txt', 'r') as f:
+with open('testCase2.txt', 'r') as f, open('output.txt', 'w') as out:
+    
+    # string formatting and title creation
+    string_format = "{:<15} {}"
+    underline = '-' * 22
+    print(string_format.format("TOKEN", "LEXEME"))
+    print(underline)
+    out.write(string_format.format("TOKEN", "LEXEME") + '\n')
+    out.write(underline + '\n')
+    
+    # read in initial char
     ch = f.read(1)
+    # while there is a char to read
     while ch:
         buffer = ''
+        # read in ch until hitting delim
         while ch not in DELIMITERS:
             buffer += ch
             ch = f.read(1)
-        # need to account for separators and <= and >= 
+        # if there is something in buffer call lexer and print
+        if buffer:
+            token = lexer(buffer)[0]
+            lexeme = lexer(buffer)[1]
+            if token:
+                out.write(string_format.format(token, lexeme) + '\n')
+                print(string_format.format(token, lexeme))
+        # if current char is a separator print separator
         if ch in SEPARATORS:
-            print(lexer(buffer))
-            print(lexer(ch))
-            ch = f.read(1)
-        else:
-            print(lexer(buffer))
-            ch = f.read(1)
-    
-
-
+            token = lexer(ch)[0]
+            if token:
+                out.write(string_format.format(token, ch) + '\n')
+                print(string_format.format(token, ch))
+        ch = f.read(1)
