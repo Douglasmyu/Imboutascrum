@@ -5,15 +5,16 @@
 - [x] implement isID() //takes string and returns true if it passes as an id
 - [x] implement isreal()
 - [x] implement lexer() function - takes in buffer/lexeme and returns token + lexem
-- [ ] create the main loop - reads through input file char by char from input.txt - adds chars into 'buffer' until hitting a separator/delimiter (also account for cases like >=) - once you hit a separator, call lexer function that returns token + lexeme - write token + lexeme into output file - clear buffer to start recognizing next token
-- [ ] write 3 test cases and include in zip file
+- [x] create the main loop - reads through input file char by char from input.txt - adds chars into 'buffer' until hitting a separator/delimiter (also account for cases like >=) - once you hit a separator, call lexer function that returns token + lexeme - write token + lexeme into output file - [x] clear buffer to start recognizing next token
+- [x] write 3 test cases and include in zip file
+- [ ] account for comments [*, *]
+- [ ] account for negative numbers
 
 ## Questions:
 
 - clarify the process for turning nfsms -> dfas -> code
   (how do we handle empty/epsilon values) => i just used a "sink" value
 - clarify what to do with empty/epsilon values... sink states?
-- do we have to have our transitions as simplified as possible?
 - is # a delimiter or what
 
 ## other things to do
