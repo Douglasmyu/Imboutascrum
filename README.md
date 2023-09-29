@@ -7,8 +7,8 @@
 - [x] implement lexer() function - takes in buffer/lexeme and returns token + lexem
 - [x] create the main loop - reads through input file char by char from input.txt - adds chars into 'buffer' until hitting a separator/delimiter (also account for cases like >=) - once you hit a separator, call lexer function that returns token + lexeme - write token + lexeme into output file - [x] clear buffer to start recognizing next token
 - [x] write 3 test cases and include in zip file
-- [ ] account for comments [*, *]
-- [ ] account for negative numbers
+- [x] account for comments [*, *]
+
 
 ## Questions:
 
