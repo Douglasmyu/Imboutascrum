@@ -11,6 +11,10 @@ Adam Louie, Douglas Yu, Steven Liu
 - [x] create the main loop - reads through input file char by char from input.txt - adds chars into 'buffer' until hitting a separator/delimiter (also account for cases like >=) - once you hit a separator, call lexer function that returns token + lexeme - write token + lexeme into output file - [x] clear buffer to start recognizing next token
 - [x] write 3 test cases and include in zip file
 - [x] account for comments [*, *]
+<<<<<<< HEAD
+=======
+
+>>>>>>> 57eaf81c51e62dbc2c3a2360ca1535faed35a121
 
 >>>>>>> 57eaf81c51e62dbc2c3a2360ca1535faed35a121
 
