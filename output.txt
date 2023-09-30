@@ -1,7 +1,0 @@
-TOKEN           LEXEME
-----------------------
-IDENTIFIER      im
-IDENTIFIER      fine
-IDENTIFIER      thank
-IDENTIFIER      you
-IDENTIFIER      OHMAHGOD
